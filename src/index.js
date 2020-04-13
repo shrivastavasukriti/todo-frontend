@@ -3,11 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import '../node_modules/font-awesome/css/font-awesome.min.css'; 
+// import { usePromiseTracker } from "react-promise-tracker";
+// import Spinner from './todo/Spinner'
+import {store} from './store/createStore'
+import {Provider} from 'react-redux';
+import  getTodosRequest from './todo/actions/getTodoActions';
+// const LoadingIndicator = props => {
+//   const { promiseInProgress } = usePromiseTracker();
 
+//   return <div>
+//    { promiseInProgress && <Spinner />}
+//     </div>
+// };
+store.dispatch(getTodosRequest())
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+   
+    {/* <LoadingIndicator /> */}
+  </Provider>,
   document.getElementById('root')
 );
 
